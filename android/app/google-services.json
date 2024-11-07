@@ -7,20 +7,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:558135539860:android:22556da536e23aec309c81",
+        "mobilesdk_app_id": "1:558135539860:android:bb6b4b130323e094309c81",
         "android_client_info": {
-          "package_name": "com.app.smart_bazaar"
+          "package_name": "com.app.smart_bazar"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "558135539860-q74r51gr1261gdl219l1rkg0u40hhjhs.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.app.smart_bazaar",
-            "certificate_hash": "fa07be49f7244d74e152e5ecadb22aefdb951adc"
-          }
-        },
         {
           "client_id": "558135539860-m7iaji3putusj9v6udrvihbrfbkl1gc9.apps.googleusercontent.com",
           "client_type": 3
@@ -39,10 +31,10 @@
               "client_type": 3
             },
             {
-              "client_id": "558135539860-fna7loflh96p0svlivb8lihb1k6v4a77.apps.googleusercontent.com",
+              "client_id": "558135539860-02fao0epi4r4dn27vdkg41cmpd1jlem3.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.smartBazaar"
+                "bundle_id": "com.app.smartBazar"
               }
             }
           ]

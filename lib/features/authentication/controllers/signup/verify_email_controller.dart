@@ -15,13 +15,13 @@ class VerifyEmailController extends GetxController {
   /// Send Email Whenever Verify Screen Appears & set Timer for Auto Redirect
   @override
   void onInit() async {
-    sendVerificationLink();
+    sendEmailVerification();
     setTimerForAutoRedirect();
     super.onInit();
   }
 
   /// Send Email Verification link
-  sendVerificationLink() async {
+  sendEmailVerification() async {
     try {
       await AuthenticationRepository.instance.sendEmailAndVerification();
       TLoaders.successSnackBar(
@@ -34,12 +34,12 @@ class VerifyEmailController extends GetxController {
 
   /// Timer to automatically redirect on Email Verification
   setTimerForAutoRedirect() {
-    Timer.periodic(Duration(seconds: 1), (timer) async {
+    Timer.periodic(const Duration(seconds: 1), (timer) async {
       await FirebaseAuth.instance.currentUser?.reload();
       final user = FirebaseAuth.instance.currentUser;
       if (user?.emailVerified ?? false) {
        timer.cancel();
-        Get.off(SuccessScreen(image: TImages.successfullyRegisterAnimation, title: TTexts.yourAccountCreatedTitle, subTitle: TTexts.yourAccountCreatedSubTitle, onPressed: () => AuthenticationRepository.instance.screenRedirect(),));
+        Get.off(SuccessScreen(image: TImages.staticSuccessIllustration, title: TTexts.yourAccountCreatedTitle, subTitle: TTexts.yourAccountCreatedSubTitle, onPressed: () => AuthenticationRepository.instance.screenRedirect(),));
       }
     });
   }
@@ -49,7 +49,7 @@ class VerifyEmailController extends GetxController {
   checkEmailVerificationStatus() {
     final currentUser =  FirebaseAuth.instance.currentUser;
     if (currentUser?.emailVerified?? false) {
-      Get.off(SuccessScreen(image: TImages.successfullyRegisterAnimation, title: TTexts.yourAccountCreatedTitle, subTitle: TTexts.yourAccountCreatedSubTitle, onPressed: () => AuthenticationRepository.instance.screenRedirect(),));
+      Get.off(SuccessScreen(image: TImages.staticSuccessIllustration, title: TTexts.yourAccountCreatedTitle, subTitle: TTexts.yourAccountCreatedSubTitle, onPressed: () => AuthenticationRepository.instance.screenRedirect(),));
     } else {
       TLoaders.errorSnackBar(title: "Oh Snap!", message: "Please Verify your Email.");
     }

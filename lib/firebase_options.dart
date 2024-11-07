@@ -42,17 +42,17 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyAgYThaOTiAoOFUeQJUceVPHQ_0VYslTII',
-    appId: '1:558135539860:web:46b4df08ba3e6397309c81',
+    appId: '1:558135539860:web:00a40ba58073dd85309c81',
     messagingSenderId: '558135539860',
     projectId: 'smart-bazar-6fbdc',
     authDomain: 'smart-bazar-6fbdc.firebaseapp.com',
     storageBucket: 'smart-bazar-6fbdc.appspot.com',
-    measurementId: 'G-GBL9FNZD6V',
+    measurementId: 'G-VFYG819ENQ',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAF1PF9NVOJROO_y8zIE7jJmAKwri2Is1A',
-    appId: '1:558135539860:android:22556da536e23aec309c81',
+    appId: '1:558135539860:android:bb6b4b130323e094309c81',
     messagingSenderId: '558135539860',
     projectId: 'smart-bazar-6fbdc',
     storageBucket: 'smart-bazar-6fbdc.appspot.com',
@@ -60,34 +60,33 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCERDap1wKGrfxAx2-Fl-AjXn8tBpWuU_0',
-    appId: '1:558135539860:ios:24db0633147b6412309c81',
+    appId: '1:558135539860:ios:b7dea1e913c77588309c81',
     messagingSenderId: '558135539860',
     projectId: 'smart-bazar-6fbdc',
     storageBucket: 'smart-bazar-6fbdc.appspot.com',
     androidClientId: '558135539860-q74r51gr1261gdl219l1rkg0u40hhjhs.apps.googleusercontent.com',
-    iosClientId: '558135539860-fna7loflh96p0svlivb8lihb1k6v4a77.apps.googleusercontent.com',
-    iosBundleId: 'com.example.smartBazaar',
+    iosClientId: '558135539860-02fao0epi4r4dn27vdkg41cmpd1jlem3.apps.googleusercontent.com',
+    iosBundleId: 'com.app.smartBazar',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyCERDap1wKGrfxAx2-Fl-AjXn8tBpWuU_0',
-    appId: '1:558135539860:ios:24db0633147b6412309c81',
+    appId: '1:558135539860:ios:b7dea1e913c77588309c81',
     messagingSenderId: '558135539860',
     projectId: 'smart-bazar-6fbdc',
     storageBucket: 'smart-bazar-6fbdc.appspot.com',
     androidClientId: '558135539860-q74r51gr1261gdl219l1rkg0u40hhjhs.apps.googleusercontent.com',
-    iosClientId: '558135539860-fna7loflh96p0svlivb8lihb1k6v4a77.apps.googleusercontent.com',
-    iosBundleId: 'com.example.smartBazaar',
+    iosClientId: '558135539860-02fao0epi4r4dn27vdkg41cmpd1jlem3.apps.googleusercontent.com',
+    iosBundleId: 'com.app.smartBazar',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
     apiKey: 'AIzaSyAgYThaOTiAoOFUeQJUceVPHQ_0VYslTII',
-    appId: '1:558135539860:web:f0232d752dc88e26309c81',
+    appId: '1:558135539860:web:55a44efe98dfa842309c81',
     messagingSenderId: '558135539860',
     projectId: 'smart-bazar-6fbdc',
     authDomain: 'smart-bazar-6fbdc.firebaseapp.com',
     storageBucket: 'smart-bazar-6fbdc.appspot.com',
-    measurementId: 'G-NZJJEQ6JZ5',
+    measurementId: 'G-QLT8EK7S04',
   );
-
 }

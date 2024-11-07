@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:smart_bazar/common/widgets/appbar/appbar.dart';
 import 'package:smart_bazar/common/widgets/images/t_circular_image.dart';
@@ -6,15 +8,18 @@ import 'package:smart_bazar/common/widgets/texts/section_heading.dart';
 import 'package:smart_bazar/features/personalization/screens/profile/widgets/t_profile_menu.dart';
 import 'package:smart_bazar/utils/constants/image_strings.dart';
 import 'package:smart_bazar/utils/helpers/helper_functions.dart';
+import 'package:smart_bazar/utils/popops/loaders.dart';
 
 import '../../../../utils/constants/sizes.dart';
+import '../../controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunctions.isDarkMode(context);
+    final controller = UserController.instance;
+    final user = controller.user.value;
     return Scaffold(
       appBar: const TAppBar(
         showArrowBack: true,
@@ -56,12 +61,12 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwItems),
               TProfileMenu(
                 title: "Name",
-                value: "Code with Rohit",
+                value: user.fullName,
                 onPressed: () {},
               ),
               TProfileMenu(
                 title: "username",
-                value: "touchwood_rohit",
+                value: user.username,
                 onPressed: () {},
               ),
               const SizedBox(height: TSizes.spaceBtwItems),
@@ -76,18 +81,27 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwItems),
               TProfileMenu(
                 title: "User ID",
-                value: "56787578",
+                value: user.id,
                 icon: Iconsax.copy,
-                onPressed: () {},
+                onPressed: () {
+                  // Copy the user ID to the clipboard
+                  Clipboard.setData(ClipboardData(text: user.id));
+
+                  // Show a snackBar message confirming the copy action
+                  TLoaders.successSnackBar(
+                    title: "Copied",
+                    message: "User ID copied to clipboard",
+                  );
+                },
               ),
               TProfileMenu(
                 title: "E-mail",
-                value: "touchwoodrohit@gmail.com",
+                value: user.email,
                 onPressed: () {},
               ),
               TProfileMenu(
                 title: "Phone Number",
-                value: "+91 8091744631",
+                value: user.phoneNumber,
                 onPressed: () {},
               ),
               TProfileMenu(

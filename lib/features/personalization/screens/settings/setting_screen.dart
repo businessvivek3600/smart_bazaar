@@ -12,7 +12,9 @@ import 'package:smart_bazar/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/list_tile/user_profile_tile.dart';
+import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../../utils/constants/colors.dart';
+import '../../../../utils/constants/text_strings.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
@@ -128,10 +130,21 @@ class SettingScreen extends StatelessWidget {
                     subTitle: "Set image quality to be seen",
                     trailing: Switch(value: false, onChanged: (value) {
 
-                    },),)
+                    },),),
+                  const SizedBox(height: TSizes.spaceBtwSections,),
+                  SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton(
+                      onPressed: () => AuthenticationRepository.instance.logout(),
+                      child: const Text(
+                        TTexts.logout,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
+
           ],
         ),
       ),
