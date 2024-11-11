@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_bazar/common/widgets/success_screen/success_screen.dart';
 import 'package:smart_bazar/data/repositories/authentication/authentication_repository.dart';
 import 'package:smart_bazar/features/authentication/controllers/signup/verify_email_controller.dart';
-import 'package:smart_bazar/features/authentication/screens/login/login_screen.dart';
 import 'package:smart_bazar/utils/constants/image_strings.dart';
 import 'package:smart_bazar/utils/constants/sizes.dart';
 import 'package:smart_bazar/utils/constants/text_strings.dart';
@@ -71,7 +69,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () => controller.sendVerificationLink(),
+                  onPressed: () => controller.sendEmailVerification(),
                   child: const Text(
                     TTexts.resendEmail,
                   ),

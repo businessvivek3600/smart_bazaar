@@ -164,7 +164,7 @@ class TImages {
   static const String successfulPaymentIcon = "assets/icons/payment_methods/successful_payment_icon.png";
 
 //Animation
-  static const String dacerAnimation = "assets/images/animations/141594-animation-of-docer.json";
+  static const String docerAnimation = "assets/images/animations/141594-animation-of-docer.json";
   static const String cloudUploadingAnimation = "assets/images/animations/cloud-uploading-animation.json";
   static const String animation3 = "assets/images/animations/animation3.gif";
   static const String animation4 = "assets/images/animations/animation4.gif";

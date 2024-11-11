@@ -44,7 +44,7 @@ static UserModel empty( )=> UserModel(id: '', firstName: '', lastName: '', usern
   /// Factory constructor to create a UserModel from a JSON map
 
 
-  factory UserModel.fromJson(DocumentSnapshot<Map<String, dynamic>> document) {
+  factory UserModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
     if(document.data() != null) {
       final json = document.data()!;
       return UserModel(
