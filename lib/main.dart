@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:smart_bazar/bindings/genral_bindings.dart';
 import 'package:smart_bazar/firebase_options.dart';
+import 'package:smart_bazar/routes/app_routes.dart';
 import 'data/repositories/authentication/authentication_repository.dart';
 import 'utils/constants/colors.dart';
 import 'utils/theme/theme.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       initialBinding: GeneralBindings(),
+      getPages:AppRoutes.pages,
       debugShowCheckedModeBanner: false,
       home: const Scaffold(backgroundColor: TColors.primary,body: Center(
         child: CircularProgressIndicator(color: Colors.white,),
@@ -46,25 +48,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-//For the system Java wrappers to find this JDK, symlink it with
-//   sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
-//
-// openjdk@17 is keg-only, which means it was not symlinked into /opt/homebrew,
-// because this is an alternate version of another formula.
-//
-// If you need to have openjdk@17 first in your PATH, run:
-//   echo '
-
-//
-// For compilers to find openjdk@17 you may need to set:
-//   export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
-// ==> node@20
-// node@20 is keg-only, which means it was not symlinked into /opt/homebrew,
-// because this is an alternate version of another formula.
-//
-// If you need to have node@20 first in your PATH, run:
-//   echo 'export PATH="/opt/homebrew/opt/node@20/bin:$PATH"' >> ~/.zshrc
-//
-// For compilers to find node@20 you may need to set:
-//   export LDFLAGS="-L/opt/homebrew/opt/node@20/lib"
-//   export CPPFLAGS="-I/opt/homebrew/opt/node@20/include"

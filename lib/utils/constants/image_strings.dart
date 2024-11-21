@@ -15,7 +15,7 @@ class TImages {
   // -- Category Icons
   static const String sportIcon = "assets/icons/categories/icons8-bowling-64.png";
   static const String clothIcon = "assets/icons/categories/icons8-tailors-dummy-64.png";
-  // static const String shoeIcon = "assets/icons/categories/icons8-shoes-64.png";
+  static const String shoeIcon = "assets/icons/categories/icons8-shoes-64.png";
   static const String cosmeticsIcon = "assets/icons/categories/icons8-cosmetics-64.png";
   static const String animalIcon = "assets/icons/categories/icons8-dog-heart-64.png";
   static const String toyIcon = "assets/icons/categories/icons8-wooden-toy-car-50.png";
@@ -33,7 +33,7 @@ class TImages {
   static const String kenwoodLogo = "assets/icons/brands/kenwood-logo.png";
   static const String hermanMillerLogo = "assets/icons/brands/herman-miller-logo.png";
   static const String ikeaLogo = "assets/icons/brands/ikea_logo.png";
-  static const String acerlogo = "assets/icons/brands/acer_logo.png";
+  static const String acerlogo = "assets/icons/brands/accer.png";
 
   // -- Animations
   static const String productsIllustration = "assets/images/animations/sammy-line-workout.gif";

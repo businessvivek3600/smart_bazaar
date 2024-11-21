@@ -4,6 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:smart_bazar/data/repositories/user/user_repository.dart';
 import 'package:smart_bazar/features/authentication/screens/login/login_screen.dart';
 import 'package:smart_bazar/features/authentication/screens/onboarding_screens/on_boarding.dart';
 import 'package:smart_bazar/features/authentication/screens/sign_up/verify_email.dart';
@@ -19,9 +20,9 @@ class AuthenticationRepository extends GetxController {
   ///variable
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
-/// Get Authenticated User Data
-  User? get authUser => _auth.currentUser;
 
+  /// Get Authenticated User Data
+  User? get authUser => _auth.currentUser;
 
   ///Called from main.dart on app launch
   @override
@@ -70,11 +71,7 @@ class AuthenticationRepository extends GetxController {
       throw "Something went wrong. Please try again";
     }
   }
-  
-  
-  
-  
-  
+
   /// [EmailAuthentication] - Register
   Future<UserCredential> registerWithEmailAndPassword(
       String email, String password) async {
@@ -134,7 +131,7 @@ class AuthenticationRepository extends GetxController {
   Future<UserCredential> googleSignIn() async {
     try {
       // Trigger the Google Sign-In flow
-      final  GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
+      final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
       // Obtain the GoogleSignInAuthentication object
       final googleAuth = await userAccount?.authentication;
       // Create a new credential
@@ -157,8 +154,6 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-
-
   ///*------------------------------LOGOUT USER ----------------------------*///
 
   ///[LogoutUser] - Valid for any authentication
@@ -169,6 +164,62 @@ class AuthenticationRepository extends GetxController {
       Get.offAll(() => const LoginScreen());
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again";
+    }
+  }
+
+  /// [ReAuthenticateUser] - Re-authenticate user with email and password
+  Future<void> reAuthenticateWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      // Get the current user
+      final user = _auth.currentUser;
+      if (user != null) {
+        // Create the credential for re-authentication
+      AuthCredential credential =
+            EmailAuthProvider.credential(email: email, password: password);
+        // Re-authenticate the user
+        await user.reauthenticateWithCredential(credential);
+      } else {
+        throw "No authenticated user found";
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-mismatch') {
+        throw "The provided credentials do not match the current user.";
+      } else if (e.code == 'user-not-found') {
+        throw "No user found for the provided email.";
+      } else if (e.code == 'wrong-password') {
+        throw "The provided password is incorrect.";
+      } else if (e.code == 'invalid-email') {
+        throw "The provided email is invalid.";
+      } else {
+        throw TFirebaseAuthException(e.code).message;
+      }
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again";
+    }
+  }
+
+  /// [DeleteAccount] - Delete the authenticated user account
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+    } on FirebaseAuthException catch (e) {
+        throw TFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
     } on FormatException {
