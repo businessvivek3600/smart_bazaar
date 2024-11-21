@@ -30,7 +30,7 @@ final void Function()? onTap;
             ///--Icon
             TCircularImage(
               image: TImages.clothIcon,
-              isNetWorkImage: false,
+              isNetworkImage: false,
               backgroundColor: Colors.transparent,
               overlayColor:
               dark ? TColors.white : TColors.black,

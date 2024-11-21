@@ -54,14 +54,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       TSectionHeading(
                         title: "Popular Categories",
-                        showActionButton: true,
+                        showActionButton: false,
                         onPressed: null,
                         textColor: TColors.white,
                       ),
                       SizedBox(height: TSizes.spaceBtwItems),
                       THomeCategories(),
                       SizedBox(
-                        height: TSizes.sm,
+                        height: TSizes.spaceBtwSections,
                       ),
                     ],
                   ),
@@ -77,11 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 ///Promo Slider....
                 TPromoSlider(
-                  banners: const [
-                    TImages.promoBanner1,
-                    TImages.promoBanner2,
-                    TImages.promoBanner3
-                  ],
+
                 ),
                 const SizedBox(height: TSizes.spaceBtwSections),
                 TSectionHeading(

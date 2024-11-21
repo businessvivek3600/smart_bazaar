@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -54,8 +53,20 @@ class UserController extends GetxController {
 
   /// Save user Record from any registration Provider
   Future<void> saveUserRecord(UserCredential? userCredentials) async {
+  final user1 =   UserModel(
+      id: userCredentials!.user!.uid,
+      email: userCredentials.user!.email ?? '' ,
+      firstName: userCredentials.user!.displayName ?? '',
+      phoneNumber: userCredentials.user!.phoneNumber ?? '',
+      username: userCredentials.user!.uid ?? '',
+      profilePicture: userCredentials.user!.photoURL ?? '', lastName: '',
+    );
+  print("--------------------------------");
+   print("${user1.id} ${user1.email} ${user1.firstName} ${user1.phoneNumber} ${user1.username} ${user1.profilePicture} ${user1.lastName}");
+   print("--------------------------------");
     try {
       //Refresh user Record
+
       await fetchUserRecord();
       if (user.value.id.isEmpty) {
         if (userCredentials != null) {
@@ -219,4 +230,5 @@ class UserController extends GetxController {
       imageUploading.value = false;
     }
   }
+
 }

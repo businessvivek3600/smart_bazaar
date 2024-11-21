@@ -15,6 +15,7 @@ import '../../../../common/widgets/list_tile/user_profile_tile.dart';
 import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/text_strings.dart';
+import 'widget/upload_data.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
@@ -105,10 +106,11 @@ class SettingScreen extends StatelessWidget {
                     title: "App Settings",
                   ),
                   const SizedBox(height: TSizes.spaceBtwItems,),
-                  const TSettingMenuTile(
+                   TSettingMenuTile(
                     icon: Iconsax.paperclip,
                     title: "Load Data",
                     subTitle: "Upload Data to your Cloud Firebase",
+                    onTap: () => Get.to(()=> const UploadDataScreen()),
                   ),
                   TSettingMenuTile(
                     icon: Iconsax.location,

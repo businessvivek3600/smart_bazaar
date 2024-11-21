@@ -14,15 +14,14 @@ class TCircularImage extends StatelessWidget {
     required this.image,
     this.fit = BoxFit.contain,
     this.backgroundColor = Colors.transparent,
-    this.isNetWorkImage = false,
-    this.overlayColor,
+    this.overlayColor,  this.isNetworkImage = false,
   });
   final double width, height, padding;
   final String image;
   final BoxFit? fit;
   final Color? backgroundColor;
-  final bool isNetWorkImage;
   final Color? overlayColor;
+  final bool isNetworkImage;
 
   @override
   Widget build(BuildContext context) {
@@ -38,17 +37,17 @@ class TCircularImage extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100),
         child: Center(
-          child: isNetWorkImage
+          child: isNetworkImage
               ? CachedNetworkImage(
                   imageUrl: image,
                   fit: fit,
                   color: overlayColor,
                   progressIndicatorBuilder: (context, url, progress) =>
-                      const TShimmerEffect(width: 55, height: 55),
+                      const TShimmerEffect(width: 55, height: 55,radius: 55,),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 )
               : Image(
-                  image: isNetWorkImage
+                  image: isNetworkImage
                       ? NetworkImage(image)
                       : AssetImage(image) as ImageProvider,
                   color: overlayColor,

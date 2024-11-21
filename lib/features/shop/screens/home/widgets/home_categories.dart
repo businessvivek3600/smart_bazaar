@@ -32,7 +32,7 @@ class THomeCategories extends StatelessWidget {
       }
 
       return SizedBox(
-        height: THelperFunctions.screenHeight() * 0.11,
+        height: 80,
         child: ListView.builder(
           itemCount: controller.featuredCategories.length,
           scrollDirection: Axis.horizontal,

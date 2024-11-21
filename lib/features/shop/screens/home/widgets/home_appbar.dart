@@ -28,7 +28,7 @@ class THomeAppBar extends StatelessWidget {
                   .apply(color: TColors.grey)),
           Obx(() {
             if (controller.userProfileLoading.value) {
-              return TShimmerEffect(width: 80, height: 15);
+              return const TShimmerEffect(width: 80, height: 15);
             } else {
               return Text(controller.user.value.fullName,
                   style: Theme.of(context)

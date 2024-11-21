@@ -38,13 +38,14 @@ class CategoryController extends GetxController {
       featuredCategories.assignAll(allCategories.where((element) => element.isFeatured && element.parentId.isEmpty).take(10).toList());
 
 
-      //Loader
-      TFullScreenLoader.openLoadingDialog(
-          "Loading Categories", TImages.docerAnimation);
+      // //Loader
+      // TFullScreenLoader.openLoadingDialog(
+      //     "Loading Categories", TImages.docerAnimation);
     } catch (e) {
       TLoaders.errorSnackBar(title: "Oh Snap!", message: e.toString());
     } finally {
-      TFullScreenLoader.stopLoading();
+      // TFullScreenLoader.stopLoading();
+      isLoading.value = false;
     }
   }
 }
