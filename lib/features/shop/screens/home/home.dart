@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:smart_bazar/common/widgets/products/product_cards/product_card_vertical.dart';
+import 'package:smart_bazar/common/widgets/shimmers/vertical_product_shimmer.dart';
 import 'package:smart_bazar/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:smart_bazar/utils/constants/image_strings.dart';
 import 'package:smart_bazar/utils/constants/sizes.dart';
@@ -9,6 +10,7 @@ import '../../../../common/widgets/custome_search_bar/custome_search_bar.darrt.d
 import '../../../../common/widgets/layout/grid_layout.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/colors.dart';
+import '../../controllers/product/product_controller.dart';
 import '../all_products/all_products.dart';
 import '../product_deatils/product_details.dart';
 import 'widgets/home_appbar.dart';
@@ -23,6 +25,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final controller = Get.put(ProductController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,27 +79,29 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               children: [
                 ///Promo Slider....
-                TPromoSlider(
-
-                ),
+                TPromoSlider(),
                 const SizedBox(height: TSizes.spaceBtwSections),
                 TSectionHeading(
                   title: "Popular Products",
                   showActionButton: true,
-                  onPressed: () =>
-                    Get.to(()=> const AllProducts())
-                 ,
+                  onPressed: () => Get.to(() => const AllProducts()),
                 ),
 
                 ///Popular Products
-                TGridLayout(
-                    itemCount: 6,
-                    itemBuilder: (p0, p1) => TProductCardVertical(
-                          onPressed: () {
-                            Get.to(const ProductDetail());
-                          },
-                        ),
-                    mainAxisExtent: 290),
+                Obx(() {
+                  if(controller.isLoading.value){
+                    return const TVerticalProductShimmer();
+                  }
+                  if(controller.allProducts.isEmpty){
+                    return  Center(child: Text("No Products Found",style: Theme.of(context).textTheme.bodyMedium,));
+                  }
+                  return TGridLayout(
+                      itemCount: controller.allProducts.length,
+                      itemBuilder: (p0, index) => TProductCardVertical(
+                        product: controller.allProducts[index],
+                          ),
+                      mainAxisExtent: 290);
+                }),
               ],
             ),
           )

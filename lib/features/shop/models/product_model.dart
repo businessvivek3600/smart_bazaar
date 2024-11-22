@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'brand_model.dart';
 import 'product_attribute_model.dart';
 import 'product_variation_model.dart';
@@ -74,15 +73,42 @@ class ProductModel {
         images: List<String>.from(data['Images'] ?? []),
         productType: data['ProductType'] ?? '',
         productAttributes: data['ProductAttributes'] != null
-            ? List<ProductAttributeModel>.from(data['ProductAttributes'].map((x) => ProductAttributeModel.fromJson(x)))
+            ? List<ProductAttributeModel>.from(data['ProductAttributes'].map((e) => ProductAttributeModel.fromJson(e)))
             : null,
         productVariation: data['ProductVariation'] != null
-            ? List<ProductVariationModel>.from(data['ProductVariation'].map((x) => ProductVariationModel.fromJson(x)))
+            ? List<ProductVariationModel>.from(data['ProductVariation'].map((e) => ProductVariationModel.fromJson(e)))
             : null,
       );
     } else {
       return ProductModel.empty();
     }
+  }
+
+  // From QuerySnapshot method
+  static ProductModel fromQuerySnapshot(QueryDocumentSnapshot<Map<String, dynamic>> document) {
+    final data = document.data();
+    return ProductModel(
+      id: document.id,
+      stock: data['Stock'] ?? 0,
+      sku: data['Sku'],
+      price: data['Price']?.toDouble() ?? 0.0,
+      title: data['Title'] ?? '',
+      date: (data['Date'] != null) ? (data['Date'] as Timestamp).toDate() : null,
+      salePrice: data['SalePrice']?.toDouble() ?? 0.0,
+      thumbnail: data['Thumbnail'] ?? '',
+      isFeatured: data['IsFeatured'],
+      model: data['BrandModel'] != null ? BrandModel.fromMap(data['BrandModel']) : null,
+      description: data['Description'],
+      categoryId: data['CategoryId'],
+      images: List<String>.from(data['Images'] ?? []),
+      productType: data['ProductType'] ?? '',
+      productAttributes: data['ProductAttributes'] != null
+          ? List<ProductAttributeModel>.from(data['ProductAttributes'].map((e) => ProductAttributeModel.fromJson(e)))
+          : null,
+      productVariation: data['ProductVariation'] != null
+          ? List<ProductVariationModel>.from(data['ProductVariation'].map((e) => ProductVariationModel.fromJson(e)))
+          : null,
+    );
   }
 
   // To JSON method
@@ -101,12 +127,8 @@ class ProductModel {
       'CategoryId': categoryId,
       'Images': images,
       'ProductType': productType,
-      'ProductAttributes': productAttributes?.map((x) => x.toJson()).toList(),
-      'ProductVariation': productVariation?.map((x) => x.toJson()).toList(),
+      'ProductAttributes': productAttributes?.map((e) => e.toJson()).toList(),
+      'ProductVariation': productVariation?.map((e) => e.toJson()).toList(),
     };
   }
 }
-
-
-
-

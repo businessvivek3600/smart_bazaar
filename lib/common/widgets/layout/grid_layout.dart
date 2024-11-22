@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/constants/sizes.dart';
 
-
 class TGridLayout extends StatelessWidget {
   const TGridLayout({
-    super.key, required this.itemCount, this.mainAxisExtent = 288, required this.itemBuilder,
+    super.key,
+    required this.itemCount,
+    this.mainAxisExtent = 288,
+    required this.itemBuilder,
   });
   final int itemCount;
   final double? mainAxisExtent;
-  final Widget? Function(BuildContext,int) itemBuilder;
+  final Widget? Function(BuildContext, int) itemBuilder;
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -20,8 +22,9 @@ class TGridLayout extends StatelessWidget {
         mainAxisSpacing: TSizes.gridViewSpacing,
         crossAxisSpacing: TSizes.gridViewSpacing,
         mainAxisExtent: mainAxisExtent,
-      ),itemCount: itemCount,
-      itemBuilder:  itemBuilder,
+      ),
+      itemCount: itemCount,
+      itemBuilder: itemBuilder,
     );
   }
 }

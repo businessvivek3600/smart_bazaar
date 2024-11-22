@@ -11,12 +11,13 @@ import 'package:smart_bazar/features/shop/screens/product_review/product_reviews
 import 'package:smart_bazar/utils/constants/sizes.dart';
 import 'package:smart_bazar/utils/helpers/helper_functions.dart';
 
+import '../../models/product_model.dart';
 import 'widget/rating_share_widget.dart';
 import 'widget/product_image_slider.dart';
 
 class ProductDetail extends StatelessWidget {
-  const ProductDetail({super.key});
-
+  const ProductDetail({super.key, required this.product});
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
@@ -26,7 +27,7 @@ class ProductDetail extends StatelessWidget {
         child: Column(
           children: [
             /// 1- Product Image Slider
-            const TProductImageSlider(),
+          TProductImageSlider(product: product,),
 
             /// 2- Product Details
             Padding(

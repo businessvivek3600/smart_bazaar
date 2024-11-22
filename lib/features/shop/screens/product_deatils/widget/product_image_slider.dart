@@ -13,12 +13,12 @@ import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
+import '../../../models/product_model.dart';
 
 class TProductImageSlider extends StatelessWidget {
   const TProductImageSlider({
-    super.key,
-  });
-
+    required this.product});
+  final ProductModel product;
 
 
   @override
@@ -32,11 +32,11 @@ class TProductImageSlider extends StatelessWidget {
             /// Main Large Image
             SizedBox(
               height: Get.height * 0.4,
-              child: const Padding(
+              child:Padding(
                 padding: EdgeInsets.all(TSizes.productImageRadius * 3),
                 child: Center(
                   child: Image(
-                    image: AssetImage(TImages.productImage5),
+                    image: AssetImage(product.thumbnail),
                   ),
                 ),
               ),

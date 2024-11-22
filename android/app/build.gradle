@@ -60,6 +60,3 @@ android {
 flutter {
     source = "../.."
 }
-dependencies {
-    implementation("com.google.android.gms:play-services-providerinstaller:17.0.0") // Or latest version
-}

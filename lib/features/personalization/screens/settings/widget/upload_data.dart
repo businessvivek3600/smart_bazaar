@@ -7,6 +7,7 @@ import '../../../../../common/widgets/texts/section_heading.dart';
 import '../../../../../data/data/dummy_data.dart';
 import '../../../../../data/repositories/banners/banners_repository.dart';
 import '../../../../../data/repositories/category/category_repository.dart';
+import '../../../../../data/repositories/product/product_repository.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 
@@ -18,6 +19,7 @@ class UploadDataScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final CategoryRepository categoryRepo = Get.put(CategoryRepository());
     final bannersRepo = Get.put(BannersRepository());
+    final productRepo = Get.put(ProductRepository());
     return Scaffold(
       appBar: const TAppBar(
         title: Text('Upload Data'),
@@ -39,9 +41,12 @@ class UploadDataScreen extends StatelessWidget {
               icon: Iconsax.shop,
               title: "Upload Brands",
             ),
-            const TMenuTile(
+             TMenuTile(
               icon: Iconsax.shopping_cart,
               title: "Upload Products",
+              onTap: () async {
+                await _uploadProductData(productRepo);  // Trigger the product upload
+              },
             ),
             TMenuTile(
               icon: Iconsax.image,
@@ -73,7 +78,44 @@ class UploadDataScreen extends StatelessWidget {
       ),
     );
   }
+  Future<void> _uploadProductData(ProductRepository repository) async {
+    try {
+      // Display a loading dialog
+      Get.dialog(
+        const Center(
+          child: CircularProgressIndicator(),
+        ),
+        barrierDismissible: false,
+      );
 
+      // Upload product data
+     await repository.uploadDummyData(TDummyData.products);  // Assuming TDummyData has product data
+
+      // Close the loading dialog
+      Get.back();
+
+      // Show success message
+      Get.snackbar(
+        "Success",
+        "Products uploaded successfully!",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
+    } catch (error) {
+      // Close the loading dialog
+      Get.back();
+
+      // Show error message
+      Get.snackbar(
+        "Error",
+        error.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+    }
+  }
   Future<void> _uploadCategoryData(CategoryRepository repository) async {
     try {
       // Display a loading dialog

@@ -9,6 +9,9 @@ import 'package:smart_bazar/features/shop/screens/home/home.dart';
 import 'package:smart_bazar/features/shop/screens/product_deatils/product_details.dart';
 import 'package:smart_bazar/utils/constants/sizes.dart';
 
+import '../../../../utils/constants/image_strings.dart';
+import '../../models/product_model.dart';
+
 class FavouriteScreen extends StatelessWidget {
   const FavouriteScreen({super.key});
 
@@ -35,9 +38,13 @@ class FavouriteScreen extends StatelessWidget {
               TGridLayout(
                 itemCount: 4,
                 itemBuilder: (_, index) => TProductCardVertical(
-                  onPressed: () {
-                    Get.to(const ProductDetail());
-                  },
+                  product: ProductModel(
+                    id: "1",
+                    title: "Product $index",
+                    thumbnail:TImages.productImage17,
+                    price: 100,
+                    stock: 10, salePrice: 9900, productType: 'simple',
+                  ),
                 ),
               )
             ],
