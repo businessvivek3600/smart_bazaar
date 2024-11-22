@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../features/shop/models/product_model.dart';
+import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../layout/grid_layout.dart';
 import '../product_cards/product_card_vertical.dart';
@@ -46,7 +48,13 @@ class TSortableProducts extends StatelessWidget {
           itemCount: 6,
           itemBuilder: (_, __) {
             return TProductCardVertical(
-              onPressed: () {},
+                product: ProductModel(
+                  id: "1",
+                  title: "Product ",
+                  thumbnail:TImages.productImage17,
+                  price: 100,
+                  stock: 10, salePrice: 9900, productType: 'simple',
+                )
             );
           },
         )

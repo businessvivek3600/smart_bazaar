@@ -8,6 +8,7 @@ import 'package:smart_bazar/features/shop/models/category_model.dart';
 import '../../../../../common/widgets/brands/brand_show_case.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
+import '../../../models/product_model.dart';
 import '../../product_deatils/product_details.dart';
 
 class TCategoryTab extends StatelessWidget {
@@ -50,9 +51,13 @@ final CategoryModel category;
               ),
               TGridLayout(
                 itemCount: 4,
-                itemBuilder: (_, index) =>  TProductCardVertical(onPressed: () {
-                  Get.to(const ProductDetail());
-                },),
+                itemBuilder: (_, index) =>  TProductCardVertical(product: ProductModel(
+                  id: "1",
+                  title: "Product $index",
+                  thumbnail:TImages.productImage17,
+                  price: 100,
+                  stock: 10, salePrice: 9900, productType: 'simple',
+                )),
               ),
               const SizedBox(height: TSizes.spaceBtwSections),
             ],
